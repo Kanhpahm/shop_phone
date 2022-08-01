@@ -1,0 +1,75 @@
+<div class="card my-4">
+    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+      
+      <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+        <h6 class="text-white text-capitalize ps-3">List Product</h6>
+      </div>
+    </div>
+    <div class="card-body px-0 pb-2">
+      <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Phones</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-10 ps-2">Price</th>
+              
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Details</th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Status</th>
+             
+              <th class="text-secondary opacity-7">
+                  <a routerLink="./create" class="btn btn-success"> Create</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let item of products" style="font-size: 35px;">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div>
+                    <img src="{{item.image}}" width="120px"  class="avatar avatar-sm me-2 border-radius-lg" alt="user1">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{item.name}}</h6>
+                  </div>
+                </div>
+              </td>
+              <td >
+                <h5 class="text-xs font-weight-bold mb-0">{{ item.price  | currency : "VND":true}} </h5>
+               <h5 > <del  class="text-xs text-secondary mb-0">{{ item.old_price  | currency : "VND":true}} </del></h5>
+              </td>
+              
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold">
+                <a routerLink="./{{item.id}}">    <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;" width="18" height="20" fill="currentColor" 
+                    class="bi bi-eye" viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                  </svg>
+                </a>
+            </span>
+              </td>
+              <td>
+                <!-- nhận biến status và truyền biến item vào thằng cha-->
+                <app-status-btn style="margin-left: 130px;"
+                [status]="item.status"
+                
+                (changeStatus)="parentChangeStatus($event, item)"
+              ></app-status-btn>
+            </td>
+            
+          <!-- (changeStatus)="parentChangeStatus($event, student)" -->
+           <td> 
+                <a routerLink="./edit/{{item.id}}" style="font-size: 9px;" class="btn btn-primary" >
+                  Edit 
+                </a>
+                <a (click)="confirmDelete(item.id)" style="font-size: 9px;" class="btn btn-danger" data-toggle="tooltip" data-original-title="Edit user">
+                    Delete
+                  </a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

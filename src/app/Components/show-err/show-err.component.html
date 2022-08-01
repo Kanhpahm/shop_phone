@@ -1,0 +1,12 @@
+<div *ngIf="formField.dirty" class="text-danger"> 
+  <!-- định nghĩa hàm dùng chung có cách hoạt động giống nhau -->
+    <p *ngIf="formField.errors?.['required']">
+      {{key}} can not be empty
+    </p>
+    <p *ngIf="formField.errors?.['minlength']">
+      {{key}} tối thiểu 6 ký tự...
+    </p>
+    <p *ngIf="formField.errors?.['maxlength']">
+      {{key}} tối đa 32 ký tự...
+    </p>
+  </div>

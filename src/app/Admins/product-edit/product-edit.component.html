@@ -1,0 +1,60 @@
+<div class="card my-4">
+  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+      <h6 class="text-white text-capitalize ps-3">List Product</h6>
+    </div>
+  </div>
+  <div class="card-body px-0 pb-2">
+    <div class="table-responsive p-0">
+      <div class="card-body">
+        <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
+          <div class="form-group">
+            <label for="">Name Phones</label>
+            <input type="text" formControlName="name" [ngModel]="product.name" name="" id="" class="form-control"
+              style="background-color: rgb(252, 225, 231);" placeholder="" aria-describedby="helpId">
+            <app-show-err key="Name" [formField]="productForm.get('name')"></app-show-err>
+          </div>
+          <div class="form-group">
+            <label for="avatar">Image</label>
+            <input type="file" class="form-control" (change)="changeAvatar($event)" >
+            
+            <img *ngIf="!imageBase64" [src]="product.image" width="200">
+            <img  [src]="imageBase64" alt="" width="200">
+          </div>
+          <div class="form-group">
+            <label for="">Price Old</label>
+            <input type="text" formControlName="old_price" [ngModel]="product.old_price" name="" id=""
+              class="form-control" style="background-color: rgb(252, 225, 231);" placeholder=""
+              aria-describedby="helpId">
+          </div>
+          <app-show-err key="Old Price" [formField]="productForm.get('old_price')"></app-show-err>
+
+          <div class="form-group">
+            <label for="">Price News</label>
+            <input type="text" name="" formControlName="price" [ngModel]="product.price" id="" class="form-control"
+              style="background-color: rgb(252, 225, 231);" placeholder="" aria-describedby="helpId">
+          </div>
+          <app-show-err key="Price" [formField]="productForm.get('price')"></app-show-err>
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea type="text" name="" formControlName="desc" [ngModel]="product.desc" id="" class="form-control"
+              style="background-color: rgb(252, 225, 231);" placeholder="" aria-describedby="helpId"></textarea>
+          </div>
+          <app-show-err key="Description" [formField]="productForm.get('description')"></app-show-err>
+
+          
+          <br>
+          <div>
+            <div><button class="btn btn-info" [disabled]="productForm.invalid">Submit</button></div>
+            <a onclick="history.back()" class="btn btn-primary">Cancel</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+</script>

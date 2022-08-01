@@ -1,0 +1,14 @@
+<td class="align-middle text-center text-sm">
+   <a> 
+      <!-- hiển thị trạng thái online khi status = 1  & tạo hàm gửi status về file ts-->
+      <button *ngIf="status === 1" class="badge badge-sm bg-gradient-success" (click)="onChangeStatus(0)"> Online
+
+
+      </button>
+   </a>
+    <!-- hiển thị trạng thái offline khi status khac 1 -->
+   <button *ngIf="status !== 1" class="badge badge-sm bg-gradient-danger" (click)="onChangeStatus(1)"> Offline
+
+
+   </button>
+</td>
